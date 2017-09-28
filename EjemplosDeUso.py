@@ -2,7 +2,15 @@
 def func(a,b):
     print(a,"+",b,"=",(a+b))
 #Llamada a la funcion anterior
-func(2,3)
+func(2, 3)
+#Llamar a la funcion con los parametros en diferente orden
+func(b=5, a=1)
+#Definir parametros por defecto, si se le asigna un valor al definir la funcion usara ese valor si no se le pasa el parametro
+def func2(a=0,b=0):
+    print(a,b)
+func2() #imprime 0 0
+func2(3) #imprime 3 0
+func2(5,10) #imprime 5 10
 #Ejemplo de variable
 # en python la coma se usa para declarar tuplas: c = 5,4
 # para usar numeros flotantes se usa el .
