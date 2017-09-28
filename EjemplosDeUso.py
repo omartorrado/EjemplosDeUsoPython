@@ -34,7 +34,7 @@ print(5+int("4"))
 #En las listas y tuplas se empieza a contar desde el 0.
 #Si contamos en negativos el -1 es el ultimo, -2 el antepenultimo, etc
 #Este metodo no sirve para los dics pq no estan ordenados, a estos se accede con el nombre de la key
-print(g["nombre"],g.keys(),g.values(),g.items(),g.items()[1])
+print(g["nombre"],g.keys(),g.values(),g.items(),g.items())
 #Con .title() obtenemos el nombre de la clave (con la primera letra en mayuscula)
 #El .lower() pone la str en minusculas
 for x in g:
@@ -48,3 +48,24 @@ print(e[1][::3])
 #Para quitarlos usamos .pop() e indicamos la posicion a borrar (en caso de no indicarla borrara el ultimo elemento)
 e.pop(1)
 print(e)
+#Controles de flujo
+numero=5
+numero2 =9
+tupla=(1,2,3,4,5)
+#Bucle if-elif(else if)-else
+if numero<5:
+    print("Menor de 5")
+elif numero>5:
+    print("Mayor de 5")
+else:
+    print("es un 5")
+#Bucle for para iterar una coleccion
+for x in tupla:
+    print(x)
+#Bucle for para un rango de numeros, el primero es inclusivo y el ultimo exclusivo (para 1-10 usaremos 1-11)
+for x in range (2,10):
+    print(x)
+#Bucle while
+while numero<10:
+    print("numero"+str(numero))
+    numero += 1

@@ -1,4 +1,4 @@
-import random
+import random,time
 
 atributos = {"fuerza":0,"destreza":0,"resistencia":0,"inteligencia":0,"percepcion":0,"carisma":0}
 habilidades ={}
@@ -25,9 +25,11 @@ def generarHabilidades():
         print(habilidades)
 
 
-
+ti = time.time()
 for x in range (0,100000001):
     generarAtributos()
+tf=time.time()
+print("Tiempo: "+str(int(tf-ti))+"s")
 valoresMedios.sort()
 for x in range (6,61):
     count=0
