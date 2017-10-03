@@ -6,7 +6,7 @@ func(2, 3)
 #Llamar a la funcion con los parametros en diferente orden
 func(b=5, a=1)
 #Definir parametros por defecto, si se le asigna un valor al definir la funcion usara ese valor si no se le pasa el parametro
-def func2(a=0,b=0):
+def func2(a=99,b=0):
     print(a,b)
 func2() #imprime 0 0
 func2(3) #imprime 3 0
@@ -77,3 +77,51 @@ for x in range (2,10):
 while numero<10:
     print("numero"+str(numero))
     numero += 1
+#Clases
+class Punto:
+    def __init__(self,x,y):
+        self.x = x
+        self.y = y
+
+    def mostraX(self):
+        print ("Coordenada x: "+str(self.x))
+#herencia circulo hereda de punto
+class Circulo(Punto):
+    def __init__(self,x,y,r):
+        Punto.__init__(self,x,y)
+        self.r = r
+    def metodoRepetido(self):
+        print("Soy circulo")
+c1=Circulo(3,5,3)
+c1.mostraX();
+#herencia multiple. cilindro hereda tanto de circulo como de terceradimension
+#En caso de que compartan metodos con el mismo nombre las clases de las que heredamos
+#se quedaria con el metodo de la primera que le pasamos como parametro, en este ejemplo
+#con el metodo metodoRepetido de Circulo
+class TerceraDimension:
+    def __init__(self,h):
+        self.h = h
+    def mostraH(self):
+        print("Altura: "+str(self.h))
+    def metodoRepetido(self):
+        print("Soy tercera dimension")
+
+import math
+class Cilindro(Circulo,TerceraDimension):
+    def __init__(self,x,y,r,h):
+        Circulo.__init__(self,x,y,r)
+        TerceraDimension.__init__(self,h)
+    def volumen(self):
+        return math.pi*self.r**2*self.h
+    #los metodos o variables definidos con _ antes del nombre se consideran privados
+    # no los podemos llamar desde fuera de la propia clase
+    def _superficie(self):
+        print(self.h)
+        return 2*math.pi*self.r**2+2*math.pi*self.r*self.h
+    def verSuperficie(self):
+        print(self._superficie())
+
+c2= Cilindro(1,1,1,1)
+print(c2.volumen())
+c2.metodoRepetido()
+c2.verSuperficie()
