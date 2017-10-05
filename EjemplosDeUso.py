@@ -42,7 +42,7 @@ print(5+int("4"))
 #En las listas y tuplas se empieza a contar desde el 0.
 #Si contamos en negativos el -1 es el ultimo, -2 el antepenultimo, etc
 #Este metodo no sirve para los dics pq no estan ordenados, a estos se accede con el nombre de la key
-print(g["nombre"],g.keys(),g.values(),g.items(),g.items())
+print(g["nombre"],g.keys(),g.values(),g.items())
 #Con .title() obtenemos el nombre de la clave (con la primera letra en mayuscula)
 #El .lower() pone la str en minusculas
 for x in g:
@@ -125,3 +125,35 @@ c2= Cilindro(1,1,1,1)
 print(c2.volumen())
 c2.metodoRepetido()
 c2.verSuperficie()
+#Diccionarios
+dict={100:"Miguel",101:"Adrian",102:"Silva"}
+#para acceder a los datos tenemos dos maneras
+print(dict[100])
+print(dict.get(100))
+#Si le pedimos una clave que no existe nos devolverá none, pero podemos evitar esto pasandole un valor por defecto
+print(dict.get(103))
+print(dict.get(103,"Clave no encontrada"))
+#el metodo contains nos devuelve true o false si la key esta en el diccionario
+print(dict.__contains__(103))
+#Hay varios metodos con los que podemos acceder a diferente informacion del diccionario
+print("Items:",dict.items())
+print("Values:",dict.values())
+print("Keys:",dict.keys())
+print("Size of:",dict.__sizeof__())
+#los metodos .items(), .values() y .keys() devuelven una vista del diccionario (dictview), si queremos acceder a un elemento
+#concreto hay que castearlas como una lista
+print(list(dict.keys())[2])
+#Podemos iterar un diccionario a traves de su lista de items para acceder a los pares clave-valor (los podriamos llamar
+#como queramos al crear el bucle)
+for clave,valor in dict.items():
+    print("clave:"+str(clave)+", valor:"+str(valor))
+#Tb lo podriamos hacer con las keys o los values
+for key in dict.keys():
+    print("Clave:"+str(key))
+for value in dict.values():
+    print("Valor:"+str(value))
+#Con el metodo len() podemos averiguar la cantidad de elementos de un diccionario, o de una dictview
+print(len(dict))
+#con pop eliminamos una key del diccionario y nos devuelve el valor, que podriamos guardar en una variable
+valor=dict.pop(100)
+print("Aqui vemos como queda el dict tras hacer pop(100): "+str(dict.items()),"Este es el valor guardado en la variable: "+valor)
