@@ -157,3 +157,12 @@ print(len(dict))
 #con pop eliminamos una key del diccionario y nos devuelve el valor, que podriamos guardar en una variable
 valor=dict.pop(100)
 print("Aqui vemos como queda el dict tras hacer pop(100): "+str(dict.items()),"Este es el valor guardado en la variable: "+valor)
+#Funciones default
+cadena ="Hola, soy una string, hola"
+print("string Split: "+str(cadena.split(" ")))
+print("string Count(ol): "+str(cadena.count("ol")))
+print(cadena)
+#Funciones de listas
+lista=[12,"soy una lista",(7,7),{1:"Miguel",2:"Paco"},12,12]
+print(lista)
+print("Lista count(): "+str(lista.count(12)))
