@@ -10,9 +10,9 @@ def tiradaMediaDados(dados,caras):
     resultados=0
     for x in range(1,dados+1):
         numero=random.randrange(1,caras+1)
-        print(numero)
+        print("tirada:",numero)
         resultados+=numero
-        print("Resultados "+str(resultados))
+        print("Total "+str(resultados))
     print("Media truncada "+str(int(resultados/dados)))
     print("Modulo "+str(resultados%dados))
     #el modulo no es lo que me interesa, sino comprobar el valor del resto en la division
