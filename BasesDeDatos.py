@@ -66,6 +66,10 @@ try:
     for x in datosMany:
         print("Iterando el resultado de fetchmany(2)", x)
 
+#por ultimo cerramos el cursor y la conexion a la db
+    cursor.close()
+    db.close()
+    print("Conexion finalizada")
 #En la primera excepcion manejamos un unico tipo de except, mientras que en la segunda 2
 except dbapi.OperationalError:
     print("La db no funciona")
