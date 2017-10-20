@@ -38,9 +38,33 @@ def cuadrado(n,m):
     #Usando list o corchetes nos devolveria una lista
     return [n**2,m**2]
 
-listaNumeros=[1,2,3,4,5]
+listaNumeros=[1,2,3,4,5,6,7,8,9,10]
 listaNumeros2=[6,7,8]
 #Si la funcion tiene mas de un paremetro se le pasarian dos listas al map. En caso de tener diferentes tamaños solo
 #ejecutara la funcion mientras haya valores para ambos parametros
 l2 = list(map(cuadrado,listaNumeros,listaNumeros2))
 print(l2)
+
+#Con el metodo filter podemos lograr que una funcion solo nos devuelva los valores que cumplan una condicion
+def par(n):
+    return (n%2==0)
+
+for i in listaNumeros:
+    print(par(i))
+
+pares = list(filter(par,listaNumeros))
+print(pares)
+
+#Compresion de listas
+#en l4 eleva al cuadrado cada elemento n de listaNumeros
+l4 =[n**2 for n in listaNumeros]
+print(l4)
+
+def c(n):
+    return n**3
+#l5 aplica el metodo c(n) a cada elemento de listaNumeros
+l5=[c(n) for n in listaNumeros]
+print(l5)
+
+l6 =[n**2 for n in listaNumeros if n % 2 == 0]
+print(l6)
