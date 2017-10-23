@@ -43,28 +43,63 @@ listaNumeros2=[6,7,8]
 #Si la funcion tiene mas de un paremetro se le pasarian dos listas al map. En caso de tener diferentes tamaños solo
 #ejecutara la funcion mientras haya valores para ambos parametros
 l2 = list(map(cuadrado,listaNumeros,listaNumeros2))
-print(l2)
+print("l2: ",l2)
 
 #Con el metodo filter podemos lograr que una funcion solo nos devuelva los valores que cumplan una condicion
 def par(n):
     return (n%2==0)
 
 for i in listaNumeros:
-    print(par(i))
+    print(i,"es par? ",par(i))
 
 pares = list(filter(par,listaNumeros))
-print(pares)
+print("list(filter): ",pares)
 
 #Compresion de listas
 #en l4 eleva al cuadrado cada elemento n de listaNumeros
 l4 =[n**2 for n in listaNumeros]
-print(l4)
+print("l4: ",l4)
 
-def c(n):
+def cubo(n):
     return n**3
-#l5 aplica el metodo c(n) a cada elemento de listaNumeros
-l5=[c(n) for n in listaNumeros]
-print(l5)
+#l5 aplica el metodo cubo(n) a cada elemento n de listaNumeros
+l5=[cubo(n) for n in listaNumeros]
+print("l5: ",l5)
 
 l6 =[n**2 for n in listaNumeros if n % 2 == 0]
-print(l6)
+print("l6: ",l6)
+
+#Python permite multiplicar cadenas de texto por numeros, en este caso lo haces iterando por
+#dos lista con un doble for
+l7_1=[0,1,2,3,4,5]
+l7_2=["a","b","c"]
+l7_3=[s*v
+      for s in l7_1
+      for v in l7_2
+      if s>0]
+print("l7: ",l7_3)
+
+#guardamos en la variable l8 la secuencia de generacion que luego usaremos en el for
+#a diferencia de l7 no guardamos los resultados en una variable, sino que los generaria a medida que los necesita
+#cuando iteramos por ella
+l=[1,2,3,4]
+l8= (n**2 for n in l)
+for i in l8:
+    print(i)
+
+#Definir un generador. Esto genera un iterable que tenemos que usar desde un bucle para acceder a cada elemento generado por la funcion
+#En este caso lo que nos devuelva el yield
+def mi_generador(n,m,s):
+    while(n <= m):
+        yield n,m*n,s*m
+        n+=s
+
+#Usando este tipo de funcion nos permitiria devolver varios valores diferentes, y acceder a ellos como una tupla si iteramos por
+#un unico elemento, o a los valores individuales si iteramos por tantos elementos como devuelva el yield
+for i,j,k in mi_generador(0,10,4):
+    print(i)
+    print(k)
+    print(j)
+
+for i in mi_generador(0,10,2):
+    print(i)
