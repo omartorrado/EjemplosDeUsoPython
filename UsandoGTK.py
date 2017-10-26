@@ -9,7 +9,7 @@ class MainWindow:
         ruta= "/home/local/DANIELCASTELAO/otorradomiguez/PycharmProjects/EjemplosDeUso/GTKGUI.xml"
         builder = Gtk.Builder()
         builder.add_from_file(ruta)
-        self.ventana=builder.get_object("window1")
+        self.ventana=builder.get_object("ventana1")
         self.ventana.show_all()
 
 if __name__=="__main__":
