@@ -3,10 +3,11 @@
 <interface>
   <requires lib="gtk+" version="3.0"/>
   <object class="GtkWindow" id="ventana1">
+    <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="window_position">center</property>
     <property name="gravity">center</property>
-    <property name="visible">True</property>
+    <signal name="destroy" handler="MainWindow_Destroy" swapped="no"/>
     <child>
       <object class="GtkGrid" id="grid1">
         <property name="visible">True</property>
@@ -14,10 +15,11 @@
         <property name="margin_top">5</property>
         <child>
           <object class="GtkButton" id="button1">
-            <property name="label" translatable="yes">button 1</property>
+            <property name="label" translatable="yes">Aceptar Texto</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
+            <signal name="clicked" handler="boton1Clicked" swapped="no"/>
           </object>
           <packing>
             <property name="left_attach">0</property>
@@ -39,18 +41,6 @@ Esto es un label</property>
           </packing>
         </child>
         <child>
-          <object class="GtkButton" id="button3">
-            <property name="label" translatable="yes">button 3</property>
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-          </object>
-          <packing>
-            <property name="left_attach">0</property>
-            <property name="top_attach">1</property>
-          </packing>
-        </child>
-        <child>
           <object class="GtkButton" id="button4">
             <property name="label" translatable="yes">button 4</property>
             <property name="visible">True</property>
@@ -68,6 +58,7 @@ Esto es un label</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
+            <signal name="clicked" handler="boton2Clicked" swapped="no"/>
           </object>
           <packing>
             <property name="left_attach">2</property>
@@ -101,13 +92,26 @@ Esto es un label</property>
           </packing>
         </child>
         <child>
-          <object class="GtkEntry" id="entry1">
+          <object class="GtkEntry" id="txtSaudo">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
           </object>
           <packing>
             <property name="left_attach">0</property>
             <property name="top_attach">2</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel" id="labelSaudo">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="label" translatable="yes">Escribe aqui debajo algo</property>
+            <property name="justify">center</property>
+            <property name="single_line_mode">True</property>
+          </object>
+          <packing>
+            <property name="left_attach">0</property>
+            <property name="top_attach">1</property>
           </packing>
         </child>
         <child>
