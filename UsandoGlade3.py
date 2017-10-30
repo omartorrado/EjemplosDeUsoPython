@@ -11,7 +11,7 @@ class VentanaPrincipal:
         builder.add_from_file(ruta)
         self.ventana=builder.get_object("ventanaPrincipal")
         self.ventana.show_all()
-        eventos = {"Destroy": Gtk.main_quit,"valueChange":}
+        eventos = {"Destroy": Gtk.main_quit,"valueChange":self.valueChange}
         builder.connect_signals(eventos)
         self.slider = builder.get_object("scale1")
 
