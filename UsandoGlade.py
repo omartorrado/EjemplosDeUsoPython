@@ -14,7 +14,7 @@ class MainWindow:
         #self.ventana.show_all()
         self.txtSaudo=builder.get_object("txtSaudo")
         self.labelSaudo=builder.get_object("labelSaudo")
-        self.boton1=builder.get_object()
+        self.boton1=builder.get_object("boton1")
         #señales(eventos)
         eventos={"MainWindow_Destroy":Gtk.main_quit,"boton1Clicked":self.boton1Clicked,"boton2Clicked":self.boton2Clicked}
         builder.connect_signals(eventos)
@@ -29,6 +29,7 @@ class MainWindow:
     def boton2Clicked(self,event):
         #print(event)
         print("No hago nada")
+        self.boton1.set_label("Cambiado el boton")
 
 if __name__=="__main__":
     MainWindow()
