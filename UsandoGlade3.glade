@@ -2,7 +2,7 @@
 <!-- Generated with glade 3.18.3 -->
 <interface>
   <requires lib="gtk+" version="3.12"/>
-  <object class="GtkAdjustment" id="adjustment1">
+  <object class="GtkAdjustment" id="Deslizador">
     <property name="upper">100</property>
     <property name="step_increment">1</property>
     <property name="page_increment">10</property>
@@ -38,7 +38,7 @@
             <property name="margin_right">25</property>
             <property name="margin_top">50</property>
             <property name="margin_bottom">50</property>
-            <property name="adjustment">adjustment1</property>
+            <property name="adjustment">Deslizador</property>
             <property name="round_digits">1</property>
             <signal name="value-changed" handler="valueChange" swapped="no"/>
           </object>

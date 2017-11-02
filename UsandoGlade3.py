@@ -14,9 +14,11 @@ class VentanaPrincipal:
         eventos = {"Destroy": Gtk.main_quit,"valueChange":self.valueChange}
         builder.connect_signals(eventos)
         self.slider = builder.get_object("scale1")
+        self.etiqueta=builder.get_object("label1")
 
-    def valueChange(self):
-        print("Terminar ejercicio")
+    def valueChange(self,evento):
+        print(evento.get_value())
+
 
 if __name__=="__main__":
     VentanaPrincipal()
