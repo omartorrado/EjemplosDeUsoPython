@@ -28,7 +28,7 @@ class VentanaPrincipal(Gtk.Window):
 
         pagina3=moduloGrid.GridModificado()
         notebook.append_page(pagina3,Gtk.Label("Titulo pagina 3"))
-    #La clase notebook no cambia a una pagina(al widget que la conforma) si esta no es visible
+        #La clase notebook no cambia a una pagina(al widget que la conforma) si esta no es visible
         notebook.set_current_page(1)
 
         self.connect("delete-event",Gtk.main_quit)
