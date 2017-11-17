@@ -55,6 +55,10 @@ for i in listaNumeros:
 pares = list(filter(par,listaNumeros))
 print("list(filter): ",pares)
 
+#Expresiones lambda:
+impares = list(filter(lambda n : n % 2.0 != 0, listaNumeros))
+print("list(filter) con lambda",impares)
+
 #Compresion de listas
 #en l4 eleva al cuadrado cada elemento n de listaNumeros
 l4 =[n**2 for n in listaNumeros]
@@ -103,3 +107,5 @@ for i,j,k in mi_generador(0,10,4):
 
 for i in mi_generador(0,10,2):
     print(i)
+
+
