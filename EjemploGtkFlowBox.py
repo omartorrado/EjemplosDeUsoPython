@@ -7,7 +7,7 @@ class ventanaPrincipal(Gtk.Window):
     def __init__(self):
         Gtk.Window.__init__(self, title="Exemplo Gtk.Flowbox")
 
-        self.set_default_size(500,350)
+        self.set_default_size(600,450)
         self.set_border_width(5)
 
         cabeceira = Gtk.HeaderBar(title="Exemplo FlowBox")
@@ -31,7 +31,10 @@ class ventanaPrincipal(Gtk.Window):
         cabeceira.pack_start(caixa)
         #Configuración do FlowBox
         flowBox = Gtk.FlowBox()
-        flowBox.set_valign(Gtk.Align.START)
+        #Los align indican como se ajusta el contenido del flowbox si sobra espacio
+        #START se pega arriba(valign) o izqueirda(halign), END abajo/derecha, CENTER medio, FILL intenta llenar tudo el espacio
+        flowBox.set_valign(Gtk.Align.CENTER)
+        flowBox.set_halign(Gtk.Align.FILL)
         flowBox.set_max_children_per_line(30)
         flowBox.set_selection_mode(Gtk.SelectionMode.NONE)
         self.crea_flowbox(flowBox)
