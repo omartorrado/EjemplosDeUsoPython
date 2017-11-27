@@ -16,6 +16,46 @@ class MainWindow(Gtk.Window):
         modelo.append([5, "Elemento 5"])
         modelo.append([6, "Elemento 6"])
 
+        #Otro ejemplo de combo Box
+        paises= Gtk.ListStore(str)
+        paises_lista=["España","Portugal","Grecia","Italia","Marruecos","Andorra"]
+        for pais in paises_lista:
+            paises.append([pais])
+        combo2 = Gtk.ComboBox.new_with_model(paises)
+        #me daba error pq no tenia la entry puesta, como no nos interesa uso new_with_model, sin el and_entry
+        #combo2 = Gtk.ComboBox.new_with_model_and_entry(paises)
+        #Esto lo comento pq sino con el add_attribute me saldria el texto dos veces[al usar el and_entry,sino no](aunque al no ponerlo me da un error[ver arriba])
+        #combo2.set_entry_text_column(0)
+        combo2.connect("changed", self.on_pais_combo_changed)
+        renderer_texto = Gtk.CellRendererText()
+        renderer_texto.set_alignment(0.5,0.5)
+        combo2.pack_start(renderer_texto, True)
+        combo2.add_attribute(renderer_texto, "text", 0)
+
+        cajaV.pack_end(combo2, False, False, 0)
+
+        #ejemplo de comboBoxText()
+        idiomas= ["English","Galego","Castellano","Italiano","French"]
+        combo3=Gtk.ComboBoxText()
+        combo3.set_entry_text_column(0)
+        combo3.connect("changed", self.on_combo3_changed)
+        for idioma in idiomas:
+            combo3.append_text(idioma)
+        cajaV.pack_end(combo3,False,False,0)
+
+        #Ejemplo CellRenderToogle
+        aprobados=Gtk.ListStore(str,bool)
+        aprobados_lista=[["Miguel",True],["Mario",True],["Damian",False],["Brais",False]]
+        for persona in aprobados_lista:
+            aprobados.append([persona[0],persona[1]])
+        render_bool=Gtk.CellRendererToggle()
+        combo4=Gtk.ComboBox.new_with_model(aprobados)
+        combo4.pack_start(render_bool,True)
+        combo4.add_attribute(render_bool,"active",1)
+        cajaV.pack_end(combo4,False,False,0)
+
+
+        #Este es el modelo que hicimos inicialmente
         #añadimos el modelo al crear el ComboBox
         combo1= Gtk.ComboBox.new_with_model_and_entry(modelo)
         combo1.connect("changed",self.on_combo1_changed)
@@ -37,8 +77,8 @@ class MainWindow(Gtk.Window):
         if puntero != None :
             #Esto [:2] es igual que hacer [0] y [1], pero en una sola linea
             id_fila, texto = modelo [puntero][:2]
-            #los %s %d son elementos que indicamos tras el % que hay despues del string
-            print ("selecionado: ID= %d, texto=%s" % (id_fila,texto))
+            #los %s (string) %d (decimal?) son elementos que indicamos tras el % que hay despues del string
+            print ("seleccionado: ID= %d, texto=%s" % (id_fila,texto))
 
     def on_combo1_enter_key(self,combo,key_pressed):
         if (key_pressed.keyval==65293):
@@ -52,6 +92,18 @@ class MainWindow(Gtk.Window):
             nuevoTexto = combo.get_child()
             print("Insertado: %s" % nuevoTexto.get_text())
             modelo.append([7, nuevoTexto.get_text()])
+
+    def on_pais_combo_changed(self,combo):
+        puntero=combo.get_active_iter()
+        modelo = combo.get_model()
+        if puntero != None :
+            print ("Pais seleccionado: %s" % modelo[puntero][0])
+
+    def on_combo3_changed(self,combo):
+        puntero=combo.get_active_iter()
+        modelo = combo.get_model()
+        if puntero != None :
+            print ("Idioma seleccionado: %s" % modelo[puntero][0])
 
 if __name__=="__main__":
     MainWindow()
