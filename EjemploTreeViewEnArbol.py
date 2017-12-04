@@ -26,6 +26,11 @@ class VentanaPrincipal(Gtk.Window):
         columna2 = Gtk.TreeViewColumn("Orden",celda,text=1)
         vista.append_column(columna2)
 
+#con el reorderable nos permite modificar la vista durante la ejecucion, pero sin guardarla para futuras ejecuciones
+        vista.set_search_column(0)
+        columna.set_sort_column_id(0)
+        vista.set_reorderable(True)
+
         self.add(vista)
         self.connect("delete_event", Gtk.main_quit)
         self.show_all()
