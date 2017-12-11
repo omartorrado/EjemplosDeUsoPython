@@ -42,6 +42,10 @@ class VentanaPrincipal(Gtk.Window):
 
         vista.get_selection().connect("changed",self.on_vista_changed)
 
+        #En estas dos lineas definimos si va a ordenar en orden ascendente o descendente y la funcion que usa para ello
+        modelo.set_sort_column_id(1,Gtk.SortType.ASCENDING)
+        modelo.set_sort_func(1,self.compara_apellido,None)
+
 
         cajaH= Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
         cajaH.pack_start(vista,False,False,0)
@@ -59,6 +63,20 @@ class VentanaPrincipal(Gtk.Window):
 
     def on_celda_edited(self,celda,posicion,texto,modelo):
         modelo[posicion][2]= texto
+
+    def compara_apellido(self,modelo,fila1,fila2,datos):
+        columna_ordenar=modelo.get_sort_column_id()
+        valor1=modelo.get_value(fila1,columna_ordenar[0])
+        valor2=modelo.get_value(fila2,columna_ordenar[0])
+        #Asi ordenaria de alfabeticamente de forma inversa, cambiando los return o las condiciones cambiariamos como
+        #ordena, por ejemplo si devolvemos -1,0,1 (en lugar de 1,0,-1 como ahora) ordenaria alfabeticamente
+        #Esto tambien se ve influido por el orden ascendente o descendente que le hayamos indicado al sort_column_id
+        if valor1<valor2:
+            return 1
+        elif valor1==valor2:
+            return 0
+        else:
+            return -1
 
 if __name__=="__main__":
     VentanaPrincipal()
